@@ -169,13 +169,14 @@ const ForecastComponent = ({forecastInfo, onShowWeek, nonShowWeek, onClose, rout
                             >
                                 <div className="cityCard-header">
                                     <div className="cityCard-header-logo">
-                                        <img    src={(item.forecast.image.url) ? item.forecast.image.url : 'http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif'}
+                                        <img    src={(item.forecast.image.url !== undefined) ? item.forecast.image.url : 'http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif'}
                                                 style = {{  width: 142,
                                                     height: 18}}
                                         />
                                     </div>
                                     <div className="cityCard-header-closeButton">
-                                        <img    src="https://png.icons8.com/nolan/64/000000/delete-sign.png"
+                                        <img    className="cityCard-header-closeButton-img"
+                                                src="https://png.icons8.com/nolan/64/000000/delete-sign.png"
                                                 onClick={(event) => OnClose(event, index)}
                                                 style = {{  width: 30,
                                                     height: 30}}
@@ -248,10 +249,12 @@ const ForecastComponent = ({forecastInfo, onShowWeek, nonShowWeek, onClose, rout
                                         </div>
                                     </div>
                                     <div>
-                                        <a href={ParseLink(item.forecast.item.link)}
-                                           target="_blank">
-                                            Detailed weather for today in {item.forecast.location.city}.
-                                        </a>
+                                        <i>
+                                            <a href={ParseLink(item.forecast.item.link)}
+                                               target="_blank">
+                                                Detailed weather for today in {item.forecast.location.city}.
+                                            </a>
+                                        </i>
                                     </div>
                                     {/*<button onClick = {(event) => WeatherForAWeek(event, index)}
                                         style = {{display: item.nonDisplay}}>
@@ -259,7 +262,11 @@ const ForecastComponent = ({forecastInfo, onShowWeek, nonShowWeek, onClose, rout
                                 </button>*/}
                                     <Link to={item.forecast.location.city}
                                           onClick={(event) => LinkFunk(event, index, item)}>
-                                        Show the weather for 10 days in {item.forecast.location.city}.
+                                        <p>
+                                            <i>
+                                                Show the weather for 10 days in {item.forecast.location.city}.
+                                            </i>
+                                        </p>
                                     </Link>
                                     <Route exact path="/:city" component={NameCityComponent}
                                     >

@@ -2,21 +2,40 @@
     width: 25%;
     display: flex;
     flex-direction: column;
-    margin: 2px;
     overflow-y: auto;
-    margin: 0 5px;
+
     max-height: 637px;
 }
 .cityCard{
+    margin: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 470px;
-    width: 100%;
+    width: 90%;
     background-color: #F5F5F5;
-    outline: 1px solid #DCDCDC;
     overflow: hidden;
+    border: 1px solid #DCDCDC;
+    border-radius: 15px;
+}
 
+@keyframes scaleCard{
+    0%,100% {
+        transform:  scale(1);
+
+    }
+    100% {
+        transform: scale(1.01);
+
+    }
+}
+
+.cityCard:hover{
+    margin: 12px;
+    animation: scaleCard 0.1s 1 ease-in-out ;
+    background-color: #CFCFCF;
+    border-color: #808080;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .cityCard-header{
@@ -48,6 +67,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+.cityCard-header-closeButton-img:hover,
+.cityCard-header-logo img:hover{
+    transform: scale(1.2);
+}
+
+@keyframes rotateCloseButton{
+    0%,100% {
+        transform:  rotate(0deg) scale(1.1);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.9);
+    }
+}
+
+.cityCard-header-closeButton-img:hover{
+    animation: rotateCloseButton 3s infinite ease-in-out;
+    transform: scale(1.15);
 }
 
 .weatherInfo{
@@ -101,6 +141,30 @@
     justify-content: center;
     align-items: center;
 }
+
+@keyframes pulseImg{
+    0% {
+        transform:  scale(1);
+    }
+    25% {
+        transform: scale(1.15);
+    }
+    75% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.weatherInfo-inform-img img,
+.cityCard-header-logo img:hover{
+    animation: pulseImg 5s infinite linear;
+}
+
+/*.weatherInfo-inform-img img:hover{
+    transform: scale(1.2);
+}*/
 
 .weatherInfo{
     display: flex;

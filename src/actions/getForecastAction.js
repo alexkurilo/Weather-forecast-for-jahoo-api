@@ -12,7 +12,7 @@ export const asyncGetForecast = (id, city) => dispatch => {
                     let forecast = JSON.parse(inquiry.responseText);
                     //console.log(forecast.query.results.channel.item.condition.code);
                     console.log(forecast);
-                    forecast = forecast.query.results.channel;
+                    forecast = forecast.query.results.channel || {};
                     //console.log(id);
                     let display = 'none';
                     let nonDisplay = "inline";

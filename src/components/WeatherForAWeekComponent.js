@@ -8,73 +8,6 @@ import ForecastComponent from "./ForecastComponent";
 
 const history = createBrowserHistory();
 
-/*export default class WeatherForAWeekComponent extends Component {
-    PropsFunc(){
-        console.log(this.props);
-    }
-
-    OnDayOfWeek (day) {
-        switch (day) {
-            case 'Mon':
-                return "Monday";
-            case 'Tue':
-                return "Tuesday";
-            case 'Wed':
-                return "Wednesday";
-            case 'Thu':
-                return "Thursday";
-            case 'Fri':
-                return "Friday";
-            case 'Sat':
-                return "Saturday";
-            default:
-                return "Sunday";
-        }
-    }
-
-    render() {
-        console.log(this.props.location.pathname);
-        console.log("/"+this.props.item.forecast.location.city);
-        console.log(this.props.location.pathname === ("/"+this.props.item.forecast.location.city));
-        if (this.props.location.pathname === ("/"+this.props.item.forecast.location.city)){
-            return (
-                <div>
-                    <Link to='/'>
-                        Hidden the weather for 10 days in {this.props.item.forecast.location.city}.
-                    </Link>
-                    {this.props.item.forecast.item.forecast.map((itemW, index)=>
-                        <section    className='cityCard'
-                                    key = {index}
-                        >
-                            <section>{this.OnDayOfWeek(itemW.day)}:
-                                <img src={'http://l.yimg.com/a/i/us/we/52/' + itemW.code + ".gif"}/>
-                                {itemW.high}&#176;{this.props.item.forecast.units.temperature},
-                                {itemW.low}&#176;{this.props.item.forecast.units.temperature}
-                            </section>
-                        </section>
-                    )}
-                </div>
-            )
-        }else{
-            return(
-                <div>
-                    <Link to={this.props.item.forecast.location.city}>
-
-                    </Link>
-                </div>
-            )
-        }
-        /!*console.log(this.props);
-        return (
-            <div>
-                <Link to='/'>
-                    Hidden the weather for 10 days in this city.
-                </Link>
-            </div>
-        )*!/
-    }
-}*/
-
 const WeatherForAWeekComponent = ({resultLinkItem, onLinkItem}) => {
     console.log(resultLinkItem);
     console.log(this.props);
@@ -100,10 +33,6 @@ const WeatherForAWeekComponent = ({resultLinkItem, onLinkItem}) => {
     };
 
     const LinkFunk = (event) => {
-        //event.preventDefault();
-        //console.log("click");
-        //console.log(index);
-        //console.log(item);
         let a = {};
         onLinkItem(a);
     };
@@ -115,17 +44,18 @@ const WeatherForAWeekComponent = ({resultLinkItem, onLinkItem}) => {
                     <Switch>
                         <Link to='/'
                               onClick={(event) => LinkFunk(event)}>
-                            Hidden the weather for 10 days in {resultLinkItem.location.city}.
+                            <p>
+                                <i>
+                                    Hidden the weather for 10 days in {resultLinkItem.location.city}.
+                                </i>
+                            </p>
                         </Link>
                         <Route exact path="/" component={ForecastComponent}>
                         </Route>
                     </Switch>
                 </Router>
                 <div>
-                    <b>Weather for 10 days</b>
-                </div>
-                <div>
-                    <b>in {resultLinkItem.location.city}</b>
+                    <b>Weather for 10 days in {resultLinkItem.location.city}</b>
                 </div>
                 <div>
                     <b>{resultLinkItem.location.country}</b>
@@ -137,10 +67,11 @@ const WeatherForAWeekComponent = ({resultLinkItem, onLinkItem}) => {
                     <section    className='weatherCityCard'
                                 key = {index}
                     >
-                        <section>{OnDayOfWeek(itemW.day)}:
+                        <section>
+                            <b>{OnDayOfWeek(itemW.day)}, {itemW.date}:</b>
                             <img src={'http://l.yimg.com/a/i/us/we/52/' + itemW.code + ".gif"}/>
-                            {itemW.high}&#176;{resultLinkItem.units.temperature},
-                            {itemW.low}&#176;{resultLinkItem.units.temperature}
+                            <b>day temperature: {itemW.high}&#176;{resultLinkItem.units.temperature},
+                            night temperature: {itemW.low}&#176;{resultLinkItem.units.temperature}</b>
                         </section>
                     </section>
                 )}
@@ -152,7 +83,14 @@ const WeatherForAWeekComponent = ({resultLinkItem, onLinkItem}) => {
         )
     }
 };
-
+/*
+code(pin): "30"
+date(pin): "22 May 2018"
+day(pin): "Tue"
+high(pin): "19"
+low(pin): "15"
+text(pin): "Partly Cloudy"
+*/
 export default connect(
     (state ) => ({
         resultLinkItem: state.resultLinkItem

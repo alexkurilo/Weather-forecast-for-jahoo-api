@@ -125,7 +125,8 @@ const CountriesComponent = ({   onshow, onShow, filterCountry, countriesAndCitie
         <div className="CountriesComponent">
             <div   style = {{display: onshow.displayEnterCountry}}>
                 <div>
-                    <input  type="text"
+                    <input  className="inputData"
+                            type="text"
                             ref={(input) => {this.countryInput = input}}
                             onChange={FindCountry}
                             onKeyPress={handleKeyPressCountry}
@@ -138,7 +139,8 @@ const CountriesComponent = ({   onshow, onShow, filterCountry, countriesAndCitie
             </div>
             <div   style = {{display: onshow.displayEnterCity}}>
                 <div>
-                    <input  type="text"
+                    <input  className="inputData"
+                            type="text"
                             ref={(input) => {this.cityInput = input}}
                             onChange={FindCity}
                             onKeyPress={(event) => handleKeyPressCity(event)}
