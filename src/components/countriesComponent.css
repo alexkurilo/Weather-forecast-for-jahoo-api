@@ -1,0 +1,28 @@
+.countryInput,
+.cityInput{
+	border: none;
+	background-color: #F5F5F5;
+
+}
+.countryInput:hover {
+	background: #BEBEBE; /* Цвет фона */
+	border: 1px solid #29B0D9; /* Параметры рамки */
+	transform: translateX(5px);
+	transform: scale(1.1);
+}
+
+.CountriesComponent{
+	width: 15%;
+	height: 637px;
+	outline: 1px solid #DCDCDC;
+	display: flex;
+	flex-direction: column;
+	background-color: #F5F5F5;
+
+}
+
+.countryList,
+.cityList {
+	overflow-y: auto;
+	height: 616px;
+}
